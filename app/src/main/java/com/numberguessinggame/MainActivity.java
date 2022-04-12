@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void newGame() {
         numberToFind = RANDOM.nextInt(MAX_NUMBER) + 1;
-        message.setText("New guess!");
+        message.setText("Range 1-100. Unlimited tries!");
         number.setText("");
         numberOfTries = 0;
     }
@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "Congratulations! You got it in " + numberOfTries + " tries.", Toast.LENGTH_SHORT).show();
             newGame();
         } else if (num > numberToFind) {
-            message.setText("Too high!");
+            Toast.makeText(this, "Too high!", Toast.LENGTH_SHORT).show();
         } else if (num < numberToFind) {
-            message.setText("Too low!");
+            Toast.makeText(this, "Too low!", Toast.LENGTH_SHORT).show();
         }
     }
 }
