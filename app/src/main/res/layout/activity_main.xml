@@ -39,5 +39,25 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="300dp"
         android:text="Guess The Number" />
+    <Button
+        android:id="@+id/read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnPlay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40sp"
+        android:text="Guess Record"
+        android:textAllCaps="false"
+        android:textSize="23sp" />
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/read"
+        android:text="Message on Guess"
+        android:textSize="23sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20sp" />
+
 
 </RelativeLayout>
