@@ -1,7 +1,7 @@
 package com.numberguessinggame;
 
+// Import necessary classes and packages
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button guessRecordBtn;
     public int numGames = 0;
 
+    // Initiate startup logic for the game app
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +46,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         newGame();
     }
 
+    // When the guess button is clicked and the onClick() event gets fired
     public void onClick(View view) {
         if (view == play) {
             validatePlay();
         }
-    } // end of onClick
+    }
 
+    // Initiate a new game
     private void newGame() {
         numGames++;
         numberToFind = RANDOM.nextInt(MAX_NUMBER) + 1;
@@ -59,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         numberOfTries = 0;
     }
 
+    // Check if guess is correct or not, then return the appropriate message
     private void validatePlay() {
         int num = Integer.parseInt(number.getText().toString()); // to convert input to integer
         numberOfTries++;
@@ -74,29 +78,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "Too low!", Toast.LENGTH_SHORT).show();
         }
     }
-    // when user exits app, delete guess record file
+
+    // When user exits app, delete guess record file
     @Override
     protected void onPause() {
         deleteFile("file.txt");
         super.onPause();
     }
-    // when app is shut down, delete guess record file
+
+    // When app is shut down, delete guess record file
     @Override
     protected void onDestroy(){
         deleteFile("file.txt");
         super.onDestroy();
     }
-    // Writes to guess record file
+
+    // Write to guess record file
     private void guessRecord(String contents) {
-        //original solution:
-        /*File path = getApplicationContext().getFilesDir();
+        /* Original solution:
+        File path = getApplicationContext().getFilesDir();
         try {
             FileOutputStream writer = new FileOutputStream(new File(path, "file.txt"));
             writer.write(contents.getBytes());
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
+        */
+
         File path = getApplicationContext().getFilesDir();
         File file  = new File(path, "file.txt");
         try {
@@ -109,7 +118,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             e.printStackTrace();
         }
     }
-    // reads from guess record file
+
+    // Read from guess record file
     public String readFromFile(String fileName) {
         File path = getApplicationContext().getFilesDir();
         File readFrom = new File(path, fileName);
@@ -124,4 +134,3 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 }
-
